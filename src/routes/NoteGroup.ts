@@ -5,10 +5,9 @@ var ObjectId = require('mongodb').ObjectId;
 
 async function routes(fastify:any,options:any){
 
-    fastify.get('/note-group/:agentId',async(request:any,reply:any)=>{
-        const a = new NoteGroup();
+    fastify.get('/api/note-group/:agentId',async(request:any,reply:any)=>{
 
-    const data =  NoteItem.find({}).populate("group_id");
+    const data =  await NoteGroup.find({agent_id:request.params.agentId});
     return data;
     })
 }

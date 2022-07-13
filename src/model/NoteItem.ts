@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 ;
+import NoteGroup from '../model/NoteGroup'
 
 const NoteItem:any = mongoose.model('NoteItem', new mongoose.Schema({
     thread_name: String,
@@ -8,7 +9,8 @@ const NoteItem:any = mongoose.model('NoteItem', new mongoose.Schema({
     thread_description : String,
     thread_group:String,
     agent_id: Number,
-    note_group:{ type: Schema.Types.ObjectId, ref: 'NoteGroup' }
+    group_id:{ type: Schema.Types.ObjectId },
+    group_info:{ type: Schema.Types.ObjectId, ref: NoteGroup }
 
 },
 

@@ -1,6 +1,6 @@
 db.createCollection("note_group");
 db.note_group.insert({
-    "group_id": {
+    "_id": {
         "$oid": "62c86e1f25f272bd9b9346d6"
       },
       "group_name": "Example Group 1",
@@ -11,7 +11,7 @@ db.note_group.insert({
 
 });
 db.note_group.insert({
-    "group_id": {
+    "_id": {
         "$oid": "62c86e1f25f272bd9b9346d7"
       },
     "group_name": "Example Group 2",
@@ -22,7 +22,7 @@ db.note_group.insert({
 
 });
 db.note_group.insert({
-    "group_id": {
+    "_id": {
         "$oid": "62c86e1f25f272bd9b9346d8"
       },
     "group_name": "Example Group 3",
@@ -34,10 +34,12 @@ db.note_group.insert({
 
 db.createCollection("note_item");
 db.note_item.insert({
-
-      "thread_topic":"thread_topic_1",
-      "thread_description":"thread_description 1",
+      "thread_name":"thread_topic_1",
+      "thread_description":"ที่ดูเข้าท่า ต้องใช้คำจากพจนานุกรมภาษาละตินถึงกว่า 200 คำ ผสมกับรูปแบบโครงสร้างประโยคอีกจำนวนหนึ่ง เพราะฉะนั้น Lorem Ipsum ที่ถูกสร้างขึ้นใหม่นี้ก็จะไม่ซ้ำไปซ้ำมา ไม่มีมุกตลกซุกแฝงไว้ภายใน หรือไม่มีคำใดๆ ที่ไม่บ่งบอกความหมาย",
       "group_id": {
+        "$oid": "62c86e1f25f272bd9b9346d8"
+      },
+      "group_info": {
         "$oid": "62c86e1f25f272bd9b9346d8"
       },
       "agent_id": 120,
@@ -46,10 +48,12 @@ db.note_item.insert({
 });
 
 db.note_item.insert({
-    "thread_id": 2,
     "thread_name": "Example thread 2",
-    "thread_detail": "Example thread detail 2",
+    "thread_description": "ศตวรรษที่ 16 เมื่อเครื่องพิมพ์โนเนมเครื่องหนึ่งนำรางตัวพิมพ์มาสลับสับตำแหน่งตัวอักษรเพื่อทำหนังสือตัวอย่าง Lorem Ipsum อยู่ยงคงกระพันมาไม่ใช่แค่เพียงห้าศตวรรษ",
     "group_id": {
+        "$oid": "62c86e1f25f272bd9b9346d8"
+      },
+    "group_info": {
         "$oid": "62c86e1f25f272bd9b9346d8"
       },
     "agent_id": 121,
@@ -59,8 +63,11 @@ db.note_item.insert({
 
 db.note_item.insert({
     "thread_name": "Example thread 3",
-    "thread_detail": "Example thread detail 3",
+    "thread_description": "มีหลักฐานที่เป็นข้อเท็จจริงยืนยันมานานแล้ว ว่าเนื้อหาที่อ่านรู้เรื่องนั้นจะไปกวนสมาธิของคนอ่านให้เขวไปจากส่วนที้เป็น Layout เรานำ Lorem Ipsum มาใช้เพราะความที่มันมีการกระจายของตัวอักษรธรรมดาๆ ",
     "group_id": {
+        "$oid": "62c86e1f25f272bd9b9346d8"
+      },
+    "group_info": {
         "$oid": "62c86e1f25f272bd9b9346d8"
       },
     "agent_id": 121,
