@@ -17,8 +17,7 @@ fastify.register(NoteItem)
 fastify.register(fileUpload)
 
 fastify.register(require('@fastify/cors'))
-
-fastify.listen({ port: 3001}, (err, address) => {
+fastify.listen({ port: 5000}, (err, address) => {
   if (err) {
     console.error(err)
     process.exit(1)
