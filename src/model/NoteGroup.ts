@@ -1,8 +1,4 @@
 import mongoose from "mongoose";
-import { ObjectId } from 'bson';
-
-import NoteItem from '../model/NoteItem'
-const Schema = mongoose.Schema;
 
 
 const NoteGroup = mongoose.model('NoteGroup', new mongoose.Schema({

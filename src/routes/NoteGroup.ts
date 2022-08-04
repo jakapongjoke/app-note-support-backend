@@ -1,6 +1,5 @@
 import NoteGroup from '../model/NoteGroup'
-import NoteItem from '../model/NoteItem'
-var ObjectId = require('mongodb').ObjectId; 
+
 
 
 async function routes(fastify:any,options:any){
