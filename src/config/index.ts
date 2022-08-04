@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 
 
   async function dbConnector(fastify:any,options:any){
-    mongoose.connect('mongodb://admin:1111@localhost:27017/warroom_note_app');
+    mongoose.connect('mongodb+srv://noteapp:MK3AR4Vp4K0S05dh@cluster0.z5ss6.mongodb.net/warroom_note_app?retryWrites=true&w=majority');
 
   }
   export default fastifyPlugin(dbConnector);

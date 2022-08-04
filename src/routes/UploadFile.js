@@ -8,11 +8,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 function routes(fastify, options) {
     return __awaiter(this, void 0, void 0, function* () {
-        fastify.get('/', (request, reply) => __awaiter(this, void 0, void 0, function* () {
-            return { hello: 'world' };
-        }));
+        fastify.post('/api/upload-aws', {
+            schema: {
+                summary: 'upload file',
+                body: {
+                    type: 'object',
+                    properties: {
+                        file: { type: 'object' }
+                    },
+                    required: ['files']
+                }
+            },
+            handler: (request, reply) => {
+                const file = request.body.files;
+                console.log(request.files);
+                reply.send({ file });
+            }
+        });
     });
 }
-module.exports = routes;
+exports.default = routes;

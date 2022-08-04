@@ -8,11 +8,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-function routes(fastify, options) {
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const fastify_plugin_1 = __importDefault(require("fastify-plugin"));
+const mongoose_1 = __importDefault(require("mongoose"));
+function dbConnector(fastify, options) {
     return __awaiter(this, void 0, void 0, function* () {
-        fastify.get('/', (request, reply) => __awaiter(this, void 0, void 0, function* () {
-            return { hello: 'world' };
-        }));
+        mongoose_1.default.connect('mongodb+srv://noteapp:MK3AR4Vp4K0S05dh@cluster0.z5ss6.mongodb.net/warroom_note_app?retryWrites=true&w=majority');
     });
 }
-module.exports = routes;
+exports.default = (0, fastify_plugin_1.default)(dbConnector);
