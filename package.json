@@ -31,6 +31,8 @@
     "fastify-file-upload": "^4.0.0",
     "fastify-mongodb": "^4.2.0",
     "fastify-mongoose": "^0.3.0",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4",
     "fastify-plugin": "^3.0.1",
     "mongodb": "^4.7.0",
     "mongoose": "^6.4.2",
