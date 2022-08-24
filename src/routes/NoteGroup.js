@@ -12,11 +12,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+;
 const NoteGroup_1 = __importDefault(require("../model/NoteGroup"));
+var ObjectId = require('mongodb').ObjectId;
 function routes(fastify, options) {
     return __awaiter(this, void 0, void 0, function* () {
         fastify.get('/api/note-group/:agentId', (request, reply) => __awaiter(this, void 0, void 0, function* () {
             const data = yield NoteGroup_1.default.find({ agent_id: request.params.agentId });
+            return data;
+        }));
+        fastify.get('/api/note-group/:agentId/:noteId', (request, reply) => __awaiter(this, void 0, void 0, function* () {
+            const data = yield NoteGroup_1.default.find({ agent_id: request.params.agentId, _id: ObjectId(request.params.noteId) });
             return data;
         }));
     });

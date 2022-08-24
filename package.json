@@ -33,6 +33,7 @@
     "fastify-mongodb": "^4.2.0",
     "fastify-mongoose": "^0.3.0",
     "fastify-plugin": "^3.0.1",
+    "moment": "^2.29.4",
     "mongodb": "^4.7.0",
     "mongoose": "^6.4.2",
     "nodemon": "^2.0.19",

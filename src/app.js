@@ -18,7 +18,7 @@ fastify.register(UploadFile_1.default);
 fastify.register(NoteItem_1.default);
 fastify.register(fileUpload);
 fastify.register(require('@fastify/cors'));
-fastify.listen({ port: process.env.PORT || 5000 }, (err, address) => {
+fastify.listen({ port: 5000 }, (err, address) => {
     if (err) {
         console.error(err);
         process.exit(1);
