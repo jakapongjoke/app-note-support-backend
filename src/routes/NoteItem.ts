@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var id = mongoose.Types.ObjectId();
 
 var moment = require('moment'); // require
-;
+
 
 async function routes(fastify:any,options:any){
 
@@ -82,7 +82,7 @@ NoteItem.findOneAndUpdate(
     fastify.post('/api/note-item/', {
       schema: {
         response: {
-          '2xx': {
+          '200': {
           properties: { 
             message: { type: 'string' } ,
             status: { type: 'string' } ,
@@ -94,7 +94,6 @@ NoteItem.findOneAndUpdate(
       console.log(request.body)
 
         if(request.body){
-
           const body:any = request.body;
           var NoteDetails = new NoteItem({
             _id: {

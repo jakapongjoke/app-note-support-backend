@@ -18,7 +18,6 @@ const { promisify } = require('util');
 var mongoose = require('mongoose');
 var id = mongoose.Types.ObjectId();
 var moment = require('moment');
-;
 function routes(fastify, options) {
     return __awaiter(this, void 0, void 0, function* () {
         fastify.get('/api/note-item/:groupId/:agentId', (request, reply) => __awaiter(this, void 0, void 0, function* () {
@@ -61,7 +60,7 @@ function routes(fastify, options) {
         fastify.post('/api/note-item/', {
             schema: {
                 response: {
-                    '2xx': {
+                    '200': {
                         properties: {
                             message: { type: 'string' },
                             status: { type: 'string' },
@@ -89,7 +88,7 @@ function routes(fastify, options) {
                     thread_thumbnail: body.thread_thumbnail,
                 });
                 if (NoteDetails.save()) {
-                    return { message: "Note Saved", status: 'complete' };
+                    return { message: "Note Saved", status: 'save_complete' };
                 }
             }
         }));
