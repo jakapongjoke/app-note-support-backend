@@ -4,7 +4,7 @@ import NoteItem from '../model/NoteItem';
 var ObjectId = require('mongodb').ObjectId; 
 // var moment = require('moment'); // require
 // ;
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 
 
 
@@ -58,7 +58,8 @@ async function routes(fastify:any,options:any){
         }
       },async(request:any,reply:any)=>{
 
-        const updateDoc = await NoteGroup.updateOne(  { _id: ObjectId(request.params.groupId) },
+        const updateDoc = await NoteGroup.updateOne( 
+             { _id: ObjectId(request.params.groupId) },
         { 
             $set: {
                 group_name:request.body.group_name,
@@ -97,11 +98,10 @@ async function routes(fastify:any,options:any){
 
         }  ,async(request:any,reply:any)=>{ 
             const body:any = request.body;
-            var id = mongoose.Types.ObjectId();
 
             var NoteGroupDetails = new NoteGroup({
               _id: {
-                "_id":ObjectId(id)
+                "_id":body._id
               },
               group_name: body.group_name,
               agent_id:Number(body.agent_id),

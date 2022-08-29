@@ -1,10 +1,9 @@
-import {  FastifyRequest } from 'fastify';
 import NoteItem from '../model/NoteItem'
 
 var ObjectId = require('mongodb').ObjectId; 
 const { promisify } = require('util')
-var mongoose = require('mongoose');
-var id = mongoose.Types.ObjectId();
+// var mongoose = require('mongoose');
+// var id = mongoose.Types.ObjectId();
 
 var moment = require('moment'); // require
 
@@ -90,14 +89,14 @@ NoteItem.findOneAndUpdate(
         } }
         }
       }
-    },async (request:FastifyRequest,reply:any)=>{
+    },async (request:any,reply:any)=>{
       console.log(request.body)
 
         if(request.body){
           const body:any = request.body;
           var NoteDetails = new NoteItem({
             _id: {
-              "_id":ObjectId(id)
+              "_id":ObjectId(body._id)
             },
             thread_name: body.thread_name,
             thread_description: body.thread_description,

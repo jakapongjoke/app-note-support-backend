@@ -16,7 +16,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const NoteGroup_1 = __importDefault(require("../model/NoteGroup"));
 const NoteItem_1 = __importDefault(require("../model/NoteItem"));
 var ObjectId = require('mongodb').ObjectId;
-var mongoose = require('mongoose');
 function routes(fastify, options) {
     return __awaiter(this, void 0, void 0, function* () {
         fastify.get('/api/note-group/:agentId', (request, reply) => __awaiter(this, void 0, void 0, function* () {
@@ -84,10 +83,9 @@ function routes(fastify, options) {
             }
         }, (request, reply) => __awaiter(this, void 0, void 0, function* () {
             const body = request.body;
-            var id = mongoose.Types.ObjectId();
             var NoteGroupDetails = new NoteGroup_1.default({
                 _id: {
-                    "_id": ObjectId(id)
+                    "_id": body._id
                 },
                 group_name: body.group_name,
                 agent_id: Number(body.agent_id),

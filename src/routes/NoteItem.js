@@ -15,8 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const NoteItem_1 = __importDefault(require("../model/NoteItem"));
 var ObjectId = require('mongodb').ObjectId;
 const { promisify } = require('util');
-var mongoose = require('mongoose');
-var id = mongoose.Types.ObjectId();
 var moment = require('moment');
 function routes(fastify, options) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -74,7 +72,7 @@ function routes(fastify, options) {
                 const body = request.body;
                 var NoteDetails = new NoteItem_1.default({
                     _id: {
-                        "_id": ObjectId(id)
+                        "_id": ObjectId(body._id)
                     },
                     thread_name: body.thread_name,
                     thread_description: body.thread_description,
