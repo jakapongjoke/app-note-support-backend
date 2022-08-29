@@ -101,7 +101,7 @@ async function routes(fastify:any,options:any){
 
             var NoteGroupDetails = new NoteGroup({
               _id: {
-                "_id":body._id
+                "_id":ObjectId(body._id)
               },
               group_name: body.group_name,
               agent_id:Number(body.agent_id),
