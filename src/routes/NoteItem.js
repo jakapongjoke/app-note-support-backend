@@ -30,6 +30,32 @@ function routes(fastify, options) {
             }).where('agent_id').equals(Number(request.params.agentId));
             return data;
         }));
+        fastify.delete('/api/note-item/:_id', {
+            schema: {
+                response: {
+                    '200': {
+                        properties: {
+                            message: { type: 'string' },
+                            status: { type: 'string' },
+                        }
+                    }
+                }
+            }
+        }, (request, reply) => __awaiter(this, void 0, void 0, function* () {
+            const deleteItem = yield NoteItem_1.default.findByIdAndDelete(request.params._id);
+            if (deleteItem) {
+                return {
+                    message: "remove Note item and note in complete",
+                    status: "delete_complete",
+                };
+            }
+            else {
+                return {
+                    message: Error,
+                    status: "delete_complete",
+                };
+            }
+        }));
         fastify.put('/api/note-item/:_id', (request, reply) => {
             NoteItem_1.default.findOneAndUpdate({ _id: ObjectId(request.params._id) }, {
                 thread_name: request.body.title,
@@ -67,7 +93,6 @@ function routes(fastify, options) {
                 }
             }
         }, (request, reply) => __awaiter(this, void 0, void 0, function* () {
-            console.log(request.body);
             if (request.body) {
                 const body = request.body;
                 var NoteDetails = new NoteItem_1.default({

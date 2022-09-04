@@ -39,6 +39,33 @@ async function routes(fastify:any,options:any){
 
 
     })
+    fastify.delete('/api/note-item/:_id', {
+      schema: {
+        response: {
+          '200': {
+          properties: { 
+            message: { type: 'string' } ,
+            status: { type: 'string' } ,
+        
+        } }
+        }
+      }
+    },async (request:any,reply:any)=>{
+
+    const deleteItem = await NoteItem.findByIdAndDelete(request.params._id)
+      if(deleteItem){
+        return {
+          message:"remove Note item and note in complete",
+          status:"delete_complete",
+        }
+      }else{
+        return {
+          message:Error,
+          status:"delete_complete",
+      }
+      }
+
+    })
 
     fastify.put('/api/note-item/:_id',(request:any,reply:any)=>{
 
@@ -90,7 +117,7 @@ NoteItem.findOneAndUpdate(
         }
       }
     },async (request:any,reply:any)=>{
-      console.log(request.body)
+    
 
         if(request.body){
           const body:any = request.body;

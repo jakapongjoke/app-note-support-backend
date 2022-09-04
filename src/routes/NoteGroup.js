@@ -85,7 +85,7 @@ function routes(fastify, options) {
             const body = request.body;
             var NoteGroupDetails = new NoteGroup_1.default({
                 _id: {
-                    "_id": body._id
+                    "_id": ObjectId(body._id)
                 },
                 group_name: body.group_name,
                 agent_id: Number(body.agent_id),
