@@ -14,7 +14,7 @@ async function routes(fastify:any,options:any){
 
     const data =  await NoteItem.find({group_id:ObjectId(request.params.groupId)}).populate({path:"group_info",
         select: 'group_name _id',
-    }).where('agent_id').equals(Number(request.params.agentId));
+    }).where('agent_id').equals(Number(request.body.agentId));
 
 
 
@@ -25,6 +25,20 @@ async function routes(fastify:any,options:any){
 
     })
 
+    fastify.get('/api/note-item/:groupId/',async(request:any,reply:any)=>{
+
+      const data =  await NoteItem.find({group_id:ObjectId(request.params.groupId)}).populate({path:"group_info",
+          select: 'group_name _id',
+      }).where('agent_id').equals(Number(request.body.agentId));
+  
+  
+  
+  
+    return data;
+  
+  
+  
+      })
 
     fastify.get('/api/note-item/all/:agentId',async(request:any,reply:any)=>{
 
@@ -32,13 +46,12 @@ async function routes(fastify:any,options:any){
         select: 'group_name _id',
     }).where('agent_id').equals(Number(request.params.agentId));
 
-
-
   return data;
 
-
-
     })
+
+
+
     fastify.delete('/api/note-item/:_id', {
       schema: {
         response: {

@@ -157,7 +157,7 @@ async function routes(fastify:any,options:any){
 
           }else{
             return {
-                message:"remove Note Group complete",
+                message:"Error ",
                 status:"delete_complete",
             }
           }
