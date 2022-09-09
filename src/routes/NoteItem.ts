@@ -14,7 +14,7 @@ async function routes(fastify:any,options:any){
 
     const data =  await NoteItem.find({group_id:ObjectId(request.params.groupId)}).populate({path:"group_info",
         select: 'group_name _id',
-    }).where('agent_id').equals(Number(request.body.agentId));
+    }).where('agent_id').equals(Number(request.params.agentId));
 
 
 
