@@ -24,6 +24,12 @@ function routes(fastify, options) {
             }).where('agent_id').equals(Number(request.params.agentId));
             return data;
         }));
+        fastify.get('/api/note-item/:groupId/', (request, reply) => __awaiter(this, void 0, void 0, function* () {
+            const data = yield NoteItem_1.default.find({ group_id: ObjectId(request.params.groupId) }).populate({ path: "group_info",
+                select: 'group_name _id',
+            }).where('agent_id').equals(Number(request.body.agentId));
+            return data;
+        }));
         fastify.get('/api/note-item/all/:agentId', (request, reply) => __awaiter(this, void 0, void 0, function* () {
             const data = yield NoteItem_1.default.find({}).populate({ path: "group_info",
                 select: 'group_name _id',
@@ -60,6 +66,7 @@ function routes(fastify, options) {
             NoteItem_1.default.findOneAndUpdate({ _id: ObjectId(request.params._id) }, {
                 thread_name: request.body.title,
                 thread_description: request.body.description,
+                thread_images: request.body.thread_images || [],
                 group_id: ObjectId(request.body.group_id),
                 group_info: ObjectId(request.body.group_id),
             }, {
@@ -108,7 +115,7 @@ function routes(fastify, options) {
                         "_id": ObjectId(body.group_id)
                     },
                     agent_id: Number(body.agent_id),
-                    thread_thumbnail: body.thread_thumbnail,
+                    thread_images: body.thread_images,
                 });
                 if (NoteDetails.save()) {
                     return { message: "Note Saved", status: 'save_complete' };

@@ -88,6 +88,7 @@ NoteItem.findOneAndUpdate(
   {
     thread_name:request.body.title,
     thread_description:request.body.description,
+    thread_images:request.body.thread_images||[],
     group_id:ObjectId(request.body.group_id),
     group_info:ObjectId(request.body.group_id),
 
@@ -147,7 +148,7 @@ NoteItem.findOneAndUpdate(
               "_id":ObjectId(body.group_id)
             },
             agent_id:Number(body.agent_id),
-            thread_thumbnail: body.thread_thumbnail,
+            thread_images: body.thread_images,
           }
           
           );

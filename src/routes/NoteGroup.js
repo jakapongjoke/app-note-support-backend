@@ -123,7 +123,7 @@ function routes(fastify, options) {
                 }
                 else {
                     return {
-                        message: "remove Note Group complete",
+                        message: "Error ",
                         status: "delete_complete",
                     };
                 }
