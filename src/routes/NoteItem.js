@@ -122,6 +122,35 @@ function routes(fastify, options) {
                 }
             }
         }));
+        fastify.post('/api/note-item-import/', (request, reply) => {
+            if (request.body) {
+                const body = request.body
+                const data = body.map(el => {
+                    return {
+                        _id: ObjectId(el._id),
+                        thread_name: el.thread_name,
+                        thread_description: el.thread_description,
+                        group_id: ObjectId(el.group_id),
+                        group_info: ObjectId(el.group_id),
+                        agent_id: Number(el.agent_id),
+                        thread_images: el.thread_images,
+                    }
+                })
+                NoteItem_1.default.collection.insertMany(data)
+                .then(async () => {
+                    return await reply
+                        .code(200)
+                        .header('Content-Type', 'application/json; charset=utf-8')
+                        .send({ message: "Note Saved", status: 'save_complete' })
+                })
+                .catch(async (err) => {
+                    return await reply
+                        .code(200)
+                        .header('Content-Type', 'application/json; charset=utf-8')
+                        .send({ message: `import note error : ${err}`, status: 'save_uncomplete' })
+                })
+            }
+        });
         fastify.get('/api/note-item/getinfo/:noteId', (request, reply) => __awaiter(this, void 0, void 0, function* () {
             const data = yield NoteItem_1.default.findOne({ _id: ObjectId(request.params.noteId) }).populate({ path: "group_info",
                 select: 'group_name _id',
